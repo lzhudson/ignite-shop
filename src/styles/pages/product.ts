@@ -1,4 +1,4 @@
-import { styled } from "..";
+import { styled } from '..'
 
 export const ProductContainer = styled('main', {
   display: 'grid',
@@ -6,7 +6,7 @@ export const ProductContainer = styled('main', {
   alignItems: 'stretch',
   gap: '4rem',
   maxWidth: 1180,
-  margin: '0 auto'
+  margin: '0 auto',
 })
 export const ImageContainer = styled('div', {
   width: '100%',
@@ -21,8 +21,8 @@ export const ImageContainer = styled('div', {
   justifyContent: 'center',
 
   img: {
-    objectFit: 'cover'
-  }
+    objectFit: 'cover',
+  },
 })
 
 export const ProductDetails = styled('div', {
@@ -31,21 +31,21 @@ export const ProductDetails = styled('div', {
 
   h1: {
     fontSize: '$2xl',
-    color: '$gray300'
+    color: '$gray300',
   },
 
   span: {
     marginTop: '1rem',
     display: 'block',
     fontSize: '$2xl',
-    color: '$green300'
-  }, 
-  
+    color: '$green300',
+  },
+
   p: {
     marginTop: '2.5rem',
     fontSize: '$md',
     lineHeight: 1.6,
-    color: '$gray300'
+    color: '$gray300',
   },
 
   button: {
@@ -58,8 +58,12 @@ export const ProductDetails = styled('div', {
     cursor: 'pointer',
     fontWeight: 'bold',
     fontSize: '$md',
-    '&:hover': {
-      backgroundColor: '$green300'
-    }
-  }
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowd',
+    },
+    '&:not(:disabled):hover': {
+      backgroundColor: '$green300',
+    },
+  },
 })
