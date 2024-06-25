@@ -20,6 +20,7 @@ export const Product = styled(Link, {
   minWidth: '540px',
   img: {
     objectFit: 'cover',
+    width: '100%'
   },
 
   footer: {
@@ -38,7 +39,15 @@ export const Product = styled(Link, {
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
-
+    button: {
+      display: 'flex',
+      padding: '0.75rem',
+      alignItems: 'center',
+      borderRadius: '6px',
+      backgroundColor: '$green500',
+      border: 'none',
+      cursor: 'pointer',
+    },
     strong: {
       fontSize: '$lg',
       color: '$gray100',
@@ -56,4 +65,10 @@ export const Product = styled(Link, {
       opacity: 1,
     },
   },
+})
+
+export const ProductContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.25rem',
 })
