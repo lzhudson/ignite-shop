@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import { HomeContainer, Product } from '../styles/pages/home'
+import { HomeContainer, Product, ProductContent } from '../styles/pages/home'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import { stripe } from '../lib/stripe'
 import Stripe from 'stripe'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { Bag } from 'phosphor-react'
+import { formatPriceToBrlCurrency } from '../utils/format-price-to-brl-currency'
 
 interface HomeProps {
   products: {
@@ -44,8 +46,13 @@ export default function Home({ products }: HomeProps) {
               alt="Camisa 1"
             />
             <footer>
-              <strong>{product.name}</strong>
-              <span>{product.price}</span>
+              <ProductContent>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </ProductContent>
+              <button title="Purchase">
+                <Bag size={32} color="#fcfcfc" />
+              </button>
             </footer>
           </Product>
         ))}
@@ -64,10 +71,7 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-      }).format(price.unit_amount / 100),
+      price: formatPriceToBrlCurrency(price.unit_amount),
     }
   })
   return {
